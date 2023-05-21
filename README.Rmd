@@ -18,14 +18,15 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of autoresid is to ...
+The autoresid package performs model diagnostics by checking for dependence
+among the estimated residuals.
 
 ## Installation
 
 You can install the development version of autoresid like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+pak::pkg_install("leonfernandes/autoresid")
 ```
 
 ## Example
@@ -33,7 +34,7 @@ You can install the development version of autoresid like so:
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-library(autoresid)
+# library(autoresid)
 ## basic example code
 ```
 
