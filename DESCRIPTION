@@ -2,8 +2,11 @@ Package: autoresid
 Title: Auto (Distance) Covariance Tests for Residuals
 Version: 0.0.0.9000
 Authors@R: 
-    person("Leon", "Fernandes", , "leon.fernandes@columbia.edu", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-7192-9939"))
+    person(
+        "Leon", "Fernandes", , "leon.fernandes@columbia.edu",
+        role = c("aut", "cre"),
+        comment = c(ORCID = "0000-0002-7192-9939")
+    )
 Maintainer: Leon Fernandes <leon.fernandes@columbia.edu>
 Description: The autoresid package performs model diagnostics by checking for
     dependence among estimated residuals.
