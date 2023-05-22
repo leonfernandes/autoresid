@@ -1,0 +1,124 @@
+#' Fit multiple sample splits
+#'
+#' Fits model according to sample splitting on a grid of values determined by
+#' `num_analysis` and `num_assessment`, where each tuple determines the number
+#' of analysis and assessment sets.
+#'
+#'
+#' @inheritParams tune::fit_resamples
+#' @param data A data frame of predictors and outcomes to use when fitting the
+#'  workflow.
+#' @param num_analysis A positive integer specifying number of observations for
+#'      analysis.
+#' @param num_assessment A positive integer specifying number of observations
+#'      for goodness-of-fit tests.
+#' @param use_fit_resamples  If `TRUE`, uses [tune::fit_resamples()].
+fit_splits <- function(
+    object,
+    data,
+    num_analysis,
+    num_assessment,
+    use_fit_resamples = FALSE,
+    ...,
+    metrics = NULL,
+    control = tune::control_resamples()
+) {
+    fn <- fit_splits_impl
+    if (use_fit_resamples) {
+        fn <- fit_splits_tune
+    }
+    fn(
+        object = object,
+        data = data,
+        num_analysis = num_analysis,
+        num_assessment = num_assessment,
+        metrics = metrics,
+        control = control
+    )
+}
+
+fit_splits_tune <- function(
+    object,
+    data,
+    num_analysis,
+    num_assessment,
+    ...,
+    metrics = NULL,
+    control = tune::control_resamples()
+) {
+    settings_tbl <- sample_splits(data, num_analysis, num_assessment)
+    # create resamples and combine
+    resamples <-
+        settings_tbl |>
+        # create manual resamples
+        purrr::pmap(
+            ~ rsample::make_splits(
+                list(analysis = 1:..1, assessment = n - ..2 + 1:..2), data
+            )
+        ) |>
+        # combine resamples
+        rsample::manual_rset(ids = settings_tbl$id)
+    result <-
+        object |>
+        # fit manual resamples
+        tune::fit_resamples(
+            resamples = resamples,
+            ...,
+            metrics = metrics,
+            control = control
+        )
+    result |>
+        dplyr::left_join(settings_tbl, by = dplyr::join_by("id"))
+}
+
+fit_splits_impl <- function(
+    object,
+    data,
+    num_analysis,
+    num_assessment,
+    ...,
+    metrics = NULL,
+    control = tune::control_resamples()
+) {
+    y_nm <- tune::outcome_names(object)
+    settings_tbl <- sample_splits(data, num_analysis, num_assessment)
+    fitted_tbl <-
+        settings_tbl |>
+        dplyr::group_by(analysis_idx) |>
+        dplyr::summarise(
+            obj_fit = list(
+                generics::fit(
+                    object,
+                    vctrs::vec_slice(data, 1:analysis_idx[1])
+                )
+            ),
+            obj_resids = list(
+                generics::augment(
+                    obj_fit[[1]],
+                    data
+                ) |>
+                dplyr::select(.pred, !!rlang::sym(y_nm))
+            )
+        )
+    res <- settings_tbl |>
+        dplyr::left_join(fitted_tbl, by = dplyr::join_by("analysis_idx")) |>
+        dplyr::mutate(
+            .predictions = purrr::map(
+                assessment_idx, ~ vctrs::vec_slice(
+                    obj_resids[[1]],
+                    vctrs::vec_size(obj_resids[[1]]) - .x + 1:.x
+                )
+            )
+        )
+    if (!is.null(metrics)) {
+        res <-
+            res |>
+            dplyr::mutate(
+                .metrics = purrr::map(
+                    .predictions,
+                    ~ metrics(.x, truth = !!rlang::sym(y_nm), estimate = .pred)
+                )
+            )
+    }
+    tibble::new_tibble(res, "smp_spl_results")
+}
