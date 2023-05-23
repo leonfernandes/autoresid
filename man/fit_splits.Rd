@@ -2,9 +2,13 @@
 % Please edit documentation in R/fit_splits.R
 \name{fit_splits}
 \alias{fit_splits}
+\alias{fit_splits.workflow}
+\alias{fit_splits.model_spec}
 \title{Fit multiple sample splits}
 \usage{
-fit_splits(
+fit_splits(object, ...)
+
+\method{fit_splits}{workflow}(
   object,
   data,
   num_analysis,
@@ -14,10 +18,23 @@ fit_splits(
   metrics = NULL,
   control = tune::control_resamples()
 )
+
+\method{fit_splits}{model_spec}(
+  object,
+  formula,
+  data,
+  num_analysis,
+  num_assessment,
+  ...,
+  metrics = NULL,
+  control = tune::control_resamples()
+)
 }
 \arguments{
 \item{object}{A \code{parsnip} model specification or a \code{\link[workflows:workflow]{workflows::workflow()}}.
 No tuning parameters are allowed.}
+
+\item{...}{Currently unused.}
 
 \item{data}{A data frame of predictors and outcomes to use when fitting the
 workflow.}
@@ -29,8 +46,6 @@ analysis.}
 for goodness-of-fit tests.}
 
 \item{use_fit_resamples}{If \code{TRUE}, uses \code{\link[tune:fit_resamples]{tune::fit_resamples()}}.}
-
-\item{...}{Currently unused.}
 
 \item{metrics}{A \code{\link[yardstick:metric_set]{yardstick::metric_set()}}, or \code{NULL} to compute a standard
 set of metrics.}
