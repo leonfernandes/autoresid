@@ -4,7 +4,7 @@
 \alias{collect_metrics.smp_spl_results}
 \title{Collect metrics for sample splitting}
 \usage{
-\method{collect_metrics}{smp_spl_results}(x)
+collect_metrics.smp_spl_results(x)
 }
 \arguments{
 \item{x}{The results of \code{\link[tune:tune_grid]{tune_grid()}}, \code{\link[tune:tune_bayes]{tune_bayes()}}, \code{\link[tune:fit_resamples]{fit_resamples()}},
