@@ -13,6 +13,7 @@
 #' @param num_assessment A positive integer specifying number of observations
 #'      for goodness-of-fit tests.
 #' @param use_fit_resamples  If `TRUE`, uses [tune::fit_resamples()].
+#' @export
 fit_splits <- function(
     object,
     data,
