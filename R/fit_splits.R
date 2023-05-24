@@ -156,11 +156,9 @@ fit_splits_impl_workflow <- function(
                 )
             ),
             obj_resids = list(
-                generics::augment(
-                    obj_fit[[1]],
-                    data
-                ) |>
-                dplyr::select(.pred, !!rlang::sym(y_nm))
+                stats::residuals(
+                    obj_fit[[1]]
+                )
             )
         )
     res <- settings_tbl |>
