@@ -52,6 +52,9 @@ set of metrics.}
 
 \item{control}{A \code{\link[tune:control_resamples]{control_resamples()}} object used to fine tune the resampling
 process.}
+
+\item{formula}{An object of class `formula`` (or one that can be coerced to
+that class): a symbolic description of the model to be fitted.}
 }
 \description{
 Fits model according to sample splitting on a grid of values determined by
