@@ -2,5 +2,6 @@
 
 S3method(fit_splits,model_spec)
 S3method(fit_splits,workflow)
+S3method(residuals,"_Arima_fit_impl")
 export(collect_metrics.smp_spl_results)
 export(fit_splits)
