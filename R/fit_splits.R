@@ -74,8 +74,7 @@ fit_splits.model_spec <- function(
             obj_resids = list(
                 stats::residuals(
                     obj_fit[[1]]
-                ) |>
-                    dplyr::select(.pred, !!rlang::sym(y_nm))
+                )
             )
         )
     res <- settings_tbl |>
