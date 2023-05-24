@@ -72,9 +72,8 @@ fit_splits.model_spec <- function(
                 )
             ),
             obj_resids = list(
-                generics::augment(
-                    obj_fit[[1]],
-                    data
+                stats::residuals(
+                    obj_fit[[1]]
                 ) |>
                     dplyr::select(.pred, !!rlang::sym(y_nm))
             )
