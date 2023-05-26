@@ -1,5 +1,5 @@
 Package: autoresid
-Title: Auto (Distance) Covariance Tests for Residuals
+Title: Auto Residuals from Fitted Models
 Version: 0.0.1.9011
 Authors@R: 
     person(
@@ -8,8 +8,8 @@ Authors@R:
         comment = c(ORCID = "0000-0002-7192-9939")
     )
 Maintainer: Leon Fernandes <leon.fernandes@columbia.edu>
-Description: The autoresid package performs model diagnostics by checking for
-    dependence among estimated residuals.
+Description: The autoresid package returns the residuals from various models
+    including ARIMA and GARCH models.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

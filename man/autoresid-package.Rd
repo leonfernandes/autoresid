@@ -4,9 +4,9 @@
 \name{autoresid-package}
 \alias{autoresid}
 \alias{autoresid-package}
-\title{autoresid: Auto (Distance) Covariance Tests for Residuals}
+\title{autoresid: Auto Residuals from Fitted Models}
 \description{
-The autoresid package performs model diagnostics by checking for dependence among estimated residuals.
+The autoresid package returns the residuals from various models including ARIMA and GARCH models.
 }
 \author{
 \strong{Maintainer}: Leon Fernandes \email{leon.fernandes@columbia.edu} (\href{https://orcid.org/0000-0002-7192-9939}{ORCID})
