@@ -6,17 +6,19 @@
 \alias{autoresid}
 \title{Extract fitted residuals from models}
 \usage{
-\method{autoresid}{`_Arima_fit_impl`}(object, new_data, ...)
+\method{autoresid}{`_Arima_fit_impl`}(object, new_data, outcome, ...)
 
-\method{autoresid}{Arima}(object, new_data, ...)
+\method{autoresid}{Arima}(object, new_data, outcome, ...)
 
-autoresid(object, new_data, ...)
+autoresid(object, new_data, outcome, ...)
 }
 \arguments{
 \item{object}{a fitted arima or garch model}
 
 \item{new_data}{a tibble of univariate time series on which residuals are to
 be calculated.}
+
+\item{outcome}{name of column to fit data to}
 
 \item{...}{Currently unused.}
 }

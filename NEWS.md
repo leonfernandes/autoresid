@@ -10,3 +10,8 @@
 
 * Implemented autroresid methods for Arima
 * Wrapper for Fitted modelttime method implemented as well
+
+# autoresid 0.0.1.9016
+
+* Fixed bug in autoresid.Arima
+* Allow column selection from new_data with outcome parameter

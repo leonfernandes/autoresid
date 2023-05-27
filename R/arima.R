@@ -1,19 +1,19 @@
 #' @rdname autoresid
 #' @export
-autoresid._Arima_fit_impl <- function(object, new_data, ...) {
+autoresid._Arima_fit_impl <- function(object, new_data, outcome, ...) {
     object <- object$fit$models$model_1
-    autoresid(object, new_data)
+    autoresid(object, new_data, outcome, ...)
 }
 
 #' @rdname autoresid
 #' @export
-autoresid.Arima <- function(object, new_data, ...) {
+autoresid.Arima <- function(object, new_data, outcome, ...) {
     model <- object$model
     len_delta <- length(model$Delta)
     len_phi <- length(model$phi)
-    # Extract first column
-    ret <- new_data[, 1][[1]]
-    ret <- c(rep(0, len_delta + len_phi), new_data)
+    # Extract outcome column
+    ret <- new_data %>% dplyr::pull(!!rlang::enquo(outcome))
+    ret <- c(rep(0, len_delta + len_phi), ret)
     # Differencing
     if (len_delta) {
         ret <- stats::filter(ret, c(1, -model$Delta), sides = 1) |>
