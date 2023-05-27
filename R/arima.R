@@ -1,13 +1,13 @@
 #' @rdname autoresid
 #' @export
-autoresid._Arima_fit_impl <- function(object, new_data) {
+autoresid._Arima_fit_impl <- function(object, new_data, ...) {
     object <- object$fit$models$model_1
     autoresid(object, new_data)
 }
 
 #' @rdname autoresid
 #' @export
-autoresid.Arima <- function(object, new_data) {
+autoresid.Arima <- function(object, new_data, ...) {
     model <- object$model
     len_delta <- length(model$Delta)
     len_phi <- length(model$phi)
@@ -17,12 +17,12 @@ autoresid.Arima <- function(object, new_data) {
     # Differencing
     if (len_delta) {
         ret <- stats::filter(ret, c(1, -model$Delta), sides = 1) |>
-            na.omit()
+            stats::na.omit()
     }
     # Apply Phi
     if (len_phi) {
         ret <- stats::filter(ret, c(1, -model$phi), sides = 1) |>
-            na.omit()
+            stats::na.omit()
     }
     # Apply Theta
     if (length(model$theta)) {
