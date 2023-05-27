@@ -2,8 +2,8 @@
 % Please edit documentation in R/autoresid-package.R
 \docType{package}
 \name{autoresid-package}
-\alias{autoresid}
 \alias{autoresid-package}
+\alias{_PACKAGE}
 \title{autoresid: Auto Residuals from Fitted Models}
 \description{
 The autoresid package returns the residuals from various models including ARIMA and GARCH models.
