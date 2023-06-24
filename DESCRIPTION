@@ -1,6 +1,6 @@
 Package: autoresid
 Title: Auto Residuals from Fitted Models
-Version: 0.0.1.9016
+Version: 0.0.1.9017
 Authors@R: 
     person(
         "Leon", "Fernandes", , "leon.fernandes@columbia.edu",
@@ -16,17 +16,14 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports:
     dplyr (>= 1.1.2),
-    forecast (>= 8.20),
     generics (>= 0.1.3),
-    magrittr,
-    purrr (>= 1.0.1),
+    magrittr (>= 2.0.3),
+    methods (>= 4.1.3),
     rlang (>= 1.1.1),
-    rsample (>= 1.1.1),
     stringr (>= 1.5.0),
     tibble (>= 3.2.1),
-    tidyr (>= 1.3.0),
-    tune (>= 1.0.1),
-    vctrs (>= 0.6.2),
-    workflows (>= 1.1.2)
+    vctrs (>= 0.6.2)
 Suggests: 
+    fGarch (>= 4022.89),
+    forecast (>= 8.20),
     modeltime (>= 1.2.6)
