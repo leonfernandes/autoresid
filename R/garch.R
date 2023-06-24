@@ -31,7 +31,7 @@ autoresid.fGARCH <-
             ),
             rep(NA, times = len_y - len_beta)
         )
-        for (i in (len_alpha + len_beta + 1):len_y) {
+        for (i in (len_alpha + len_beta + 1):(len_alpha + len_y)) {
             h[i] <-
                 omega +
                 sum(
@@ -42,6 +42,6 @@ autoresid.fGARCH <-
                 sum(beta * h[i - (1:len_beta)])
         }
         h <- utils::tail(h, len_y)
-        z <- y / (h^deltainv)
+        z <- utils::tail(y, len_y) / (h^deltainv)
         z
     }
