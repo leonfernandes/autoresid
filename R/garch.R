@@ -27,7 +27,7 @@ autoresid.fGARCH <-
         h <- c(
             # extract first few residuals
             vctrs::vec_slice(
-                stats::residuals(object), 1:(len_alpha + len_beta)
+                fGarch::residuals(object), 1:(len_alpha + len_beta)
             ),
             rep(NA, times = len_y - len_beta)
         )
