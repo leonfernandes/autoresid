@@ -2,7 +2,7 @@
 
 S3method(autoresid,"_Arima_fit_impl")
 S3method(autoresid,Arima)
+S3method(autoresid,fGARCH)
 export("%>%")
 export(autoresid)
-export(collect_metrics.smp_spl_results)
 importFrom(magrittr,"%>%")
