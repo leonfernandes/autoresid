@@ -1,7 +1,9 @@
 #' @rdname autoresid
+#' @param standardize_resid single logical. Should the extracted residuals be
+#'      stanrdized?
 #' @export
 autoresid.fGARCH <-
-    function(object, new_data, outcome, ...) {
+    function(object, new_data, outcome, standardize_resid = FALSE, ...) {
         fit <- methods::slot(object, "fit")
         omega <- subset_from_name(fit$params$params, "omega")
         alpha <- subset_from_name(fit$params$params, "alpha")
@@ -25,9 +27,10 @@ autoresid.fGARCH <-
             y
         )
         h <- c(
-            # extract first few residuals
+            # workaround: extract first few residuals
             vctrs::vec_slice(
-                fGarch::residuals(object), 1:(len_alpha + len_beta)
+                fGarch::residuals(object, standardize = standardize_resid),
+                1:(len_alpha + len_beta)
             ),
             rep(NA, times = len_y - len_beta)
         )
