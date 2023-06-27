@@ -1,3 +1,3 @@
-# autoresid 0.0.1.9019
+# autoresid 0.0.2
 
-current development version
+Basic version released.

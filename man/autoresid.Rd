@@ -13,7 +13,7 @@
 
 autoresid(object, new_data, outcome, ...)
 
-\method{autoresid}{fGARCH}(object, new_data, outcome, ...)
+\method{autoresid}{fGARCH}(object, new_data, outcome, standardize_resid = FALSE, ...)
 }
 \arguments{
 \item{object}{a fitted arima or garch model}
@@ -24,6 +24,9 @@ be calculated.}
 \item{outcome}{name of column to fit data to}
 
 \item{...}{Currently unused.}
+
+\item{standardize_resid}{single logical. Should the extracted residuals be
+stanrdized?}
 }
 \value{
 a tibble of predicted values and residuals.
