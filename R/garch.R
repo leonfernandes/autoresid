@@ -19,7 +19,7 @@ autoresid.fGARCH <-
         len_y <- vctrs::vec_size(y)
         if (len_y < len_alpha) {
             rlang::abort(
-                "Number of outcomes is not more than length of `alpha`"
+                "Number of outcomes is not more than length of `alpha`."
             )
         }
         y <- c(
