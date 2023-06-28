@@ -4,6 +4,7 @@
 \alias{autoresid._Arima_fit_impl}
 \alias{autoresid.Arima}
 \alias{autoresid}
+\alias{autoresid._fGARCH}
 \alias{autoresid.fGARCH}
 \title{Extract fitted residuals from models}
 \usage{
@@ -12,6 +13,8 @@
 \method{autoresid}{Arima}(object, new_data, outcome, ...)
 
 autoresid(object, new_data, outcome, ...)
+
+\method{autoresid}{`_fGARCH`}(object, new_data, outcome, standardize_resid = FALSE, ...)
 
 \method{autoresid}{fGARCH}(object, new_data, outcome, standardize_resid = FALSE, ...)
 }

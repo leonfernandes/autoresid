@@ -2,6 +2,20 @@
 #' @param standardize_resid single logical. Should the extracted residuals be
 #'      stanrdized?
 #' @export
+autoresid._fGARCH <-
+    function(object, new_data, outcome, standardize_resid = FALSE, ...) {
+        object <- object$fit
+        autoresid(
+            object = object,
+            new_data = new_data,
+            outcome = outcome,
+            standardize_resid = standardize_resid,
+            ... = ...
+        )
+    }
+
+#' @rdname autoresid
+#' @export
 autoresid.fGARCH <-
     function(object, new_data, outcome, standardize_resid = FALSE, ...) {
         fit <- methods::slot(object, "fit")
