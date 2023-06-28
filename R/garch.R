@@ -1,4 +1,7 @@
-#' @rdname autoresid
+#' Autoresid methods for GARCH models
+#'
+#' @inheritParams autoresid
+#' @rdname autoresid_garch
 #' @param standardize_resid single logical. Should the extracted residuals be
 #'      stanrdized?
 #' @export
@@ -14,7 +17,7 @@ autoresid._fGARCH <-
         )
     }
 
-#' @rdname autoresid
+#' @rdname autoresid_garch
 #' @export
 autoresid.fGARCH <-
     function(object, new_data, outcome, standardize_resid = FALSE, ...) {
@@ -60,5 +63,8 @@ autoresid.fGARCH <-
         }
         h <- utils::tail(h, len_y)
         z <- utils::tail(y, len_y) / (h^deltainv)
-        z
+        tibble::new_tibble(
+            tibble::tibble(".resid" = z),
+            class = "autoresid_tbl"
+        )
     }
