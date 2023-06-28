@@ -1,12 +1,23 @@
-#' @rdname autoresid
+#' Autoresid methods for ARIMA models
+#'
+#' @inheritParams autoresid
+#' @rdname autoresid_arima
 #' @export
 autoresid._Arima_fit_impl <-
     function(object, new_data, outcome, ...) {
-        object <- object$fit$models$model_1
+        object <- object$fit
         autoresid(object, new_data, outcome, ...)
     }
 
-#' @rdname autoresid
+#' @rdname autoresid_arima
+#' @export
+autoresid.Arima_fit_impl <-
+    function(object, new_data, outcome, ...) {
+        object <- object$models$model_1
+        autoresid(object, new_data, outcome, ...)
+    }
+
+#' @rdname autoresid_arima
 #' @export
 autoresid.Arima <-
     function(object, new_data, outcome, ...) {
