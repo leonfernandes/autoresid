@@ -45,10 +45,10 @@ autoresid.fGARCH <-
         )
         h <- c(
             # workaround: extract first few residuals
-            vctrs::vec_slice(
+            abs(vctrs::vec_slice(
                 fGarch::residuals(object, standardize = standardize_resid),
                 1:(len_alpha + len_beta)
-            ),
+            ))^delta,
             rep(NA, times = len_y - len_beta)
         )
         for (i in (len_alpha + len_beta + 1):(len_alpha + len_y)) {
