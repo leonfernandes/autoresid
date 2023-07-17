@@ -31,8 +31,9 @@ autoresid.fGARCH <-
         len_beta <- vctrs::vec_size(beta)
         deltainv <- 1 / delta
 
+        outcome <- rlang::enquo(outcome)
         # Extract outcome column
-        y <- new_data %>% dplyr::pull(!!rlang::enquo(outcome))
+        y <- new_data %>% dplyr::pull(!!outcome)
         len_y <- vctrs::vec_size(y)
         if (len_y < len_alpha) {
             rlang::abort(
@@ -63,8 +64,8 @@ autoresid.fGARCH <-
         }
         h <- utils::tail(h, len_y)
         z <- utils::tail(y, len_y) / (h^deltainv)
-        tibble::new_tibble(
-            tibble::tibble(".resid" = z),
-            class = "autoresid_tbl"
-        )
+        new_data |>
+            dplyr::mutate(".resid" = z) |>
+            dplyr::select(-!!outcome) |>
+            tsibble::new_tsibble(class = "autoresid_ts")
     }

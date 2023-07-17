@@ -15,8 +15,8 @@
 \arguments{
 \item{object}{a fitted arima or garch model}
 
-\item{new_data}{a tibble of univariate time series on which residuals are to
-be calculated.}
+\item{new_data}{a \link[tsibble:tsibble-package]{tsibble} of univariate
+time series on which residuals are to be calculated.}
 
 \item{outcome}{name of column to fit data to}
 

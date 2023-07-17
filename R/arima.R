@@ -24,8 +24,9 @@ autoresid.Arima <-
         model <- object$model
         len_delta <- length(model$Delta)
         len_phi <- length(model$phi)
+        outcome <- rlang::enquo(outcome)
         # Extract outcome column
-        ret <- new_data %>% dplyr::pull(!!rlang::enquo(outcome))
+        ret <- new_data %>% dplyr::pull(!!outcome)
         ret <- c(rep(0, len_delta + len_phi), ret)
         # Differencing
         if (len_delta) {
@@ -41,8 +42,8 @@ autoresid.Arima <-
         if (length(model$theta)) {
             ret <- stats::filter(ret, -model$theta, method = "recursive")
         }
-        tibble::new_tibble(
-            tibble::tibble(".resid" = ret),
-            class = "autoresid_tbl"
-        )
+        new_data |>
+            dplyr::mutate(".resid" = ret) |>
+            dplyr::select(-!!outcome) |>
+            tsibble::new_tsibble(class = "autoresid_ts")
     }

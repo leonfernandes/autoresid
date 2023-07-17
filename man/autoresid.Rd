@@ -9,15 +9,16 @@ autoresid(object, new_data, outcome, ...)
 \arguments{
 \item{object}{a fitted arima or garch model}
 
-\item{new_data}{a tibble of univariate time series on which residuals are to
-be calculated.}
+\item{new_data}{a \link[tsibble:tsibble-package]{tsibble} of univariate
+time series on which residuals are to be calculated.}
 
 \item{outcome}{name of column to fit data to}
 
 \item{...}{Currently unused.}
 }
 \value{
-a tibble of predicted values and residuals.
+a \link[tsibble:tsibble-package]{tsibble} of predicted values and
+residuals.
 }
 \description{
 Extract fitted residuals from models
