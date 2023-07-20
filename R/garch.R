@@ -5,21 +5,7 @@
 #' @param standardize_resid single logical. Should the extracted residuals be
 #'      stanrdized?
 #' @export
-autoresid._fGARCH <-
-    function(object, new_data, outcome, standardize_resid = FALSE, ...) {
-        object <- object$fit
-        autoresid(
-            object = object,
-            new_data = new_data,
-            outcome = outcome,
-            standardize_resid = standardize_resid,
-            ... = ...
-        )
-    }
-
-#' @rdname autoresid_garch
-#' @export
-autoresid.fGARCH <-
+autoresid_fGARCH_impl <-
     function(object, new_data, outcome, standardize_resid = FALSE, ...) {
         fit <- methods::slot(object, "fit")
         omega <- subset_from_name(fit$params$params, "omega")
@@ -33,7 +19,7 @@ autoresid.fGARCH <-
 
         outcome <- rlang::enquo(outcome)
         # Extract outcome column
-        y <- new_data %>% dplyr::pull(!!outcome)
+        y <- new_data |> dplyr::pull(!!outcome)
         len_y <- vctrs::vec_size(y)
         if (len_y < len_alpha) {
             rlang::abort(

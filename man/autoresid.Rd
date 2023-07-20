@@ -14,7 +14,7 @@ time series on which residuals are to be calculated.}
 
 \item{outcome}{name of column to fit data to}
 
-\item{...}{Currently unused.}
+\item{...}{Options passed to methods.}
 }
 \value{
 a \link[tsibble:tsibble-package]{tsibble} of predicted values and

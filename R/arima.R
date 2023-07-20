@@ -1,32 +1,16 @@
-#' Autoresid methods for ARIMA models
+#' Autoresid implementation for Arima models
 #'
 #' @inheritParams autoresid
 #' @rdname autoresid_arima
 #' @export
-autoresid._Arima_fit_impl <-
-    function(object, new_data, outcome, ...) {
-        object <- object$fit
-        autoresid(object, new_data, outcome, ...)
-    }
-
-#' @rdname autoresid_arima
-#' @export
-autoresid.Arima_fit_impl <-
-    function(object, new_data, outcome, ...) {
-        object <- object$models$model_1
-        autoresid(object, new_data, outcome, ...)
-    }
-
-#' @rdname autoresid_arima
-#' @export
-autoresid.Arima <-
+autoresid_arima_impl <-
     function(object, new_data, outcome, ...) {
         model <- object$model
         len_delta <- length(model$Delta)
         len_phi <- length(model$phi)
         outcome <- rlang::enquo(outcome)
         # Extract outcome column
-        ret <- new_data %>% dplyr::pull(!!outcome)
+        ret <- new_data |> dplyr::pull(!!outcome)
         ret <- c(rep(0, len_delta + len_phi), ret)
         # Differencing
         if (len_delta) {
