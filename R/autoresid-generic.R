@@ -14,7 +14,7 @@ autoresid <- function(object, new_data, outcome = NULL, ...) {
         outcome <- extract_outcome(object)
     }
     switch(
-        class(mdl),
+        class(mdl)[1],
         Arima = autoresid_arima_impl(mdl, new_data, outcome, ...),
         fGARCH = autoresid_fGARCH_impl(mdl, new_data, outcome, ...)
     )
