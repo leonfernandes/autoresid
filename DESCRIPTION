@@ -1,6 +1,6 @@
 Package: autoresid
 Title: Auto Residuals from Fitted Models
-Version: 0.0.2.9005
+Version: 0.0.2.9006
 Authors@R: 
     person(
         "Leon", "Fernandes", , "leon.fernandes@columbia.edu",
@@ -27,5 +27,4 @@ Suggests:
     fable (>= 0.3.3),
     fabletools (>= 0.3.3),
     fGarch (>= 4022.89),
-    forecast (>= 8.20),
     modeltime (>= 1.2.6)
