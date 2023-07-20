@@ -2,9 +2,15 @@
 % Please edit documentation in R/autoresid-generic.R
 \name{autoresid}
 \alias{autoresid}
+\alias{autoresid.Arima}
+\alias{autoresid.fGARCH}
 \title{Extract fitted residuals from models}
 \usage{
 autoresid(object, new_data, outcome = NULL, ...)
+
+\method{autoresid}{Arima}(object, new_data, outcome, ...)
+
+\method{autoresid}{fGARCH}(object, new_data, outcome, ...)
 }
 \arguments{
 \item{object}{a fitted arima or garch model}

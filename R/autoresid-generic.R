@@ -9,13 +9,23 @@
 #'      residuals.
 #' @export
 autoresid <- function(object, new_data, outcome = NULL, ...) {
-    mdl <- extract_model(object)
+    object <- extract_model(object)
     if (is.null(outcome)) {
         outcome <- extract_outcome(object)
     }
-    switch(
-        class(mdl)[1],
-        Arima = autoresid_arima_impl(mdl, new_data, outcome, ...),
-        fGARCH = autoresid_fGARCH_impl(mdl, new_data, outcome, ...)
-    )
+    UseMethod("autoresid")
 }
+
+#' @rdname autoresid
+#' @export
+autoresid.Arima <-
+    function(object, new_data, outcome, ...) {
+        autoresid_arima_impl(object, new_data, outcome, ...)
+    }
+
+#' @rdname autoresid
+#' @export
+autoresid.fGARCH <-
+    function(object, new_data, outcome, ...) {
+        autoresid_fgarch_impl(object, new_data, outcome, ...)
+    }

@@ -4,7 +4,7 @@
 #' @rdname autoresid_garch
 #' @param standardize_resid single logical. Should the extracted residuals be
 #'      standardized?
-autoresid_fGARCH_impl <-
+autoresid_fgarch_impl <-
     function(object, new_data, outcome, standardize_resid = FALSE, ...) {
         if (!inherits(object, "fGARCH")) rlang::abort("Not fGARCH object.")
         fit <- methods::slot(object, "fit")
