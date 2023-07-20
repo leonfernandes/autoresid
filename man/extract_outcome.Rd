@@ -2,9 +2,12 @@
 % Please edit documentation in R/extract_outcome.R
 \name{extract_outcome}
 \alias{extract_outcome}
+\alias{extract_outcome.mdl_ts}
 \title{Extracts outcome column name}
 \usage{
 extract_outcome(object, ...)
+
+\method{extract_outcome}{mdl_ts}(object, ...)
 }
 \arguments{
 \item{object}{an object to extract model from.}

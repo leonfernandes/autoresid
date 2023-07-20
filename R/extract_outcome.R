@@ -5,5 +5,5 @@
 #' @param ... unused.
 extract_outcome <- function(object, ...) UseMethod("extract_outcome")
 
-#' @rdname extract_model
-extract_model.mdl_ts <- function(object, ...) fabletools::response(object, ...)
+#' @rdname extract_outcome
+extract_outcome.mdl_ts <- function(object, ...) fabletools::response(object)
