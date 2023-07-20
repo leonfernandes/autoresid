@@ -9,7 +9,7 @@
 \usage{
 autoresid(object, new_data, outcome = NULL, ...)
 
-\method{autoresid}{default}(object, new_data, outcome, ...)
+\method{autoresid}{default}(object, new_data, outcome = NULL, ...)
 
 \method{autoresid}{Arima}(object, new_data, outcome, ...)
 

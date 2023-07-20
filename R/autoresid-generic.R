@@ -15,7 +15,7 @@ autoresid <- function(object, new_data, outcome = NULL, ...) {
 #' @rdname autoresid
 #' @export
 autoresid.default <-
-    function(object, new_data, outcome, ...) {
+    function(object, new_data, outcome = NULL, ...) {
         mdl <- NULL
         try(
             mdl <- extract_model(object)
