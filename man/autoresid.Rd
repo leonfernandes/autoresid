@@ -2,11 +2,14 @@
 % Please edit documentation in R/autoresid-generic.R
 \name{autoresid}
 \alias{autoresid}
+\alias{autoresid.default}
 \alias{autoresid.Arima}
 \alias{autoresid.fGARCH}
 \title{Extract fitted residuals from models}
 \usage{
 autoresid(object, new_data, outcome = NULL, ...)
+
+\method{autoresid}{default}(object, new_data, outcome, ...)
 
 \method{autoresid}{Arima}(object, new_data, outcome, ...)
 

@@ -9,12 +9,23 @@
 #'      residuals.
 #' @export
 autoresid <- function(object, new_data, outcome = NULL, ...) {
-    object <- extract_model(object)
-    if (is.null(outcome)) {
-        outcome <- extract_outcome(object)
-    }
     UseMethod("autoresid")
 }
+
+#' @rdname autoresid
+#' @export
+autoresid.default <-
+    function(object, new_data, outcome, ...) {
+        mdl <- NULL
+        try(
+            mdl <- extract_model(object)
+        )
+        if (is.null(mdl)) rlang::abort("No registered method for `object`.")
+        if (is.null(outcome)) {
+            outcome <- extract_outcome(object)
+        }
+        autoresid(mdl, new_data, outcome, ...)
+    }
 
 #' @rdname autoresid
 #' @export
