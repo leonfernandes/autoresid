@@ -4,6 +4,7 @@
 #' @rdname autoresid_arima
 autoresid_arima_impl <-
     function(object, new_data, outcome, ...) {
+        if (!inherits(object, "Arima")) rlang::abort("Not Arima object.")
         model <- object$model
         len_delta <- length(model$Delta)
         len_phi <- length(model$phi)

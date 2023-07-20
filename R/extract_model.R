@@ -4,7 +4,7 @@
 #' registered with this package.
 #' @param object an object to extract model from.
 #' @param ... unused.
-extract_model <- function(object, ...) UseMethod("extract_arima")
+extract_model <- function(object, ...) UseMethod("extract_model")
 
 #' @rdname extract_model
 extract_model.Arima <- function(object, ...) object

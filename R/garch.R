@@ -6,7 +6,7 @@
 #'      standardized?
 autoresid_fGARCH_impl <-
     function(object, new_data, outcome, standardize_resid = FALSE, ...) {
-        if(!inherits(object, "fGARCH"))
+        if (!inherits(object, "fGARCH")) rlang::abort("Not fGARCH object.")
         fit <- methods::slot(object, "fit")
         omega <- subset_from_name(fit$params$params, "omega")
         alpha <- subset_from_name(fit$params$params, "alpha")
