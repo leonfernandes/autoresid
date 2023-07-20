@@ -4,7 +4,7 @@
 \alias{autoresid}
 \title{Extract fitted residuals from models}
 \usage{
-autoresid(object, new_data, outcome, ...)
+autoresid(object, new_data, outcome = NULL, ...)
 }
 \arguments{
 \item{object}{a fitted arima or garch model}
@@ -12,7 +12,7 @@ autoresid(object, new_data, outcome, ...)
 \item{new_data}{a \link[tsibble:tsibble-package]{tsibble} of univariate
 time series on which residuals are to be calculated.}
 
-\item{outcome}{name of column to fit data to}
+\item{outcome}{name of column to fit data to.}
 
 \item{...}{Options passed to methods.}
 }

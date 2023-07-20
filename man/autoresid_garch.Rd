@@ -18,7 +18,7 @@ autoresid_fGARCH_impl(
 \item{new_data}{a \link[tsibble:tsibble-package]{tsibble} of univariate
 time series on which residuals are to be calculated.}
 
-\item{outcome}{name of column to fit data to}
+\item{outcome}{name of column to fit data to.}
 
 \item{standardize_resid}{single logical. Should the extracted residuals be
 standardized?}

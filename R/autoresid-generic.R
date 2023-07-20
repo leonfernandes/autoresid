@@ -8,7 +8,7 @@
 #' @return a [tsibble][tsibble::tsibble-package] of predicted values and
 #'      residuals.
 #' @export
-autoresid <- function(object, new_data, outcome, ...) {
+autoresid <- function(object, new_data, outcome = NULL, ...) {
     mdl <- extract_model(object)
     if (is.null(outcome)) {
         outcome <- extract_outcome(object)

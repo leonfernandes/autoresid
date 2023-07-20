@@ -12,7 +12,7 @@ autoresid_arima_impl(object, new_data, outcome, ...)
 \item{new_data}{a \link[tsibble:tsibble-package]{tsibble} of univariate
 time series on which residuals are to be calculated.}
 
-\item{outcome}{name of column to fit data to}
+\item{outcome}{name of column to fit data to.}
 
 \item{...}{Options passed to methods.}
 }
