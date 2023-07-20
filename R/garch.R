@@ -3,10 +3,10 @@
 #' @inheritParams autoresid
 #' @rdname autoresid_garch
 #' @param standardize_resid single logical. Should the extracted residuals be
-#'      stanrdized?
-#' @export
+#'      standardized?
 autoresid_fGARCH_impl <-
     function(object, new_data, outcome, standardize_resid = FALSE, ...) {
+        if(!inherits(object, "fGARCH"))
         fit <- methods::slot(object, "fit")
         omega <- subset_from_name(fit$params$params, "omega")
         alpha <- subset_from_name(fit$params$params, "alpha")

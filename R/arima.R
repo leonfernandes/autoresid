@@ -2,7 +2,6 @@
 #'
 #' @inheritParams autoresid
 #' @rdname autoresid_arima
-#' @export
 autoresid_arima_impl <-
     function(object, new_data, outcome, ...) {
         model <- object$model

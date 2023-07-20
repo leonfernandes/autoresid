@@ -12,7 +12,7 @@ autoresid <- function(object, new_data, outcome, ...) {
     mdl <- extract_model(object)
     switch(
         class(mdl),
-        Arima = autoresid_arima_impl(object, new_data, outcome, ... = ...),
-        fGarch = autoresid_fGARCH_impl(object, new_data, outcome, ... = ...)
+        Arima = autoresid_arima_impl(object, new_data, outcome, ...),
+        fGARCH = autoresid_fGARCH_impl(object, new_data, outcome, ...)
     )
 }

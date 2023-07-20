@@ -5,8 +5,11 @@
 \alias{extract_model.Arima}
 \alias{extract_model.Arima_fit_impl}
 \alias{extract_model._Arima_fit_impl}
-\alias{extract_model.fGarch}
-\alias{extract_model._fGarch}
+\alias{extract_model.fGARCH}
+\alias{extract_model._fGARCH}
+\alias{extract_model.mdl_ts}
+\alias{extract_model.ARIMA}
+\alias{extract_model.AR}
 \title{Extracts available models}
 \usage{
 extract_model(object, ...)
@@ -17,9 +20,15 @@ extract_model(object, ...)
 
 \method{extract_model}{`_Arima_fit_impl`}(object, ...)
 
-\method{extract_model}{fGarch}(object, ...)
+\method{extract_model}{fGARCH}(object, ...)
 
-\method{extract_model}{`_fGarch`}(object, ...)
+\method{extract_model}{`_fGARCH`}(object, ...)
+
+\method{extract_model}{mdl_ts}(object, ...)
+
+\method{extract_model}{ARIMA}(object, ...)
+
+\method{extract_model}{AR}(object, ...)
 }
 \arguments{
 \item{object}{an object to extract model from.}
