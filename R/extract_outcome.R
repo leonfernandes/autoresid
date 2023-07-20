@@ -6,4 +6,4 @@
 extract_outcome <- function(object, ...) UseMethod("extract_outcome")
 
 #' @rdname extract_outcome
-extract_outcome.mdl_ts <- function(object, ...) fabletools::response(object)
+extract_outcome.mdl_ts <- function(object, ...) fabletools::response_vars(object)
