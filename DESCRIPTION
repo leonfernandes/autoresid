@@ -1,6 +1,6 @@
 Package: autoresid
 Title: Auto Residuals from Fitted Models
-Version: 0.0.2.9018
+Version: 0.0.2.9019
 Authors@R: 
     person(
         "Leon", "Fernandes", , "leon.fernandes@columbia.edu",

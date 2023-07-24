@@ -11,7 +11,7 @@ extract_outcome <- function(object, ...) UseMethod("extract_outcome")
 extract_outcome.default <-
     function(object, ...) {
         if (inherits(object, "mdl_defn")) {
-            return(rlang::eval_tidy(object$formula))
+            return(extract_outcome(rlang::eval_tidy(object$formula)))
         }
         rlang::abort(
             glue::glue("Outcome of class {class(object)} cannot be determined.")
