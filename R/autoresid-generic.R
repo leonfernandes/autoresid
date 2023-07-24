@@ -5,8 +5,7 @@
 #'      time series on which residuals are to be calculated.
 #' @param outcome name of column to fit data to.
 #' @param ... Options passed to methods.
-#' @return a [tsibble][tsibble::tsibble-package] of predicted values and
-#'      residuals.
+#' @return a [tsibble][tsibble::tsibble-package] of fitted residuals.
 #' @export
 autoresid <- function(object, new_data, outcome = NULL, ...) {
     UseMethod("autoresid")
@@ -16,11 +15,7 @@ autoresid <- function(object, new_data, outcome = NULL, ...) {
 #' @export
 autoresid.default <-
     function(object, new_data, outcome = NULL, ...) {
-        mdl <- NULL
-        try(
-            mdl <- extract_model(object)
-        )
-        if (is.null(mdl)) rlang::abort("No registered method for `object`.")
+        mdl <- extract_model(object)
         if (is.null(outcome)) {
             outcome <- extract_outcome(object)
         }
@@ -30,13 +25,14 @@ autoresid.default <-
 #' @rdname autoresid
 #' @export
 autoresid.Arima <-
-    function(object, new_data, outcome, ...) {
+    function(object, new_data, outcome = NULL, ...) {
         autoresid_arima_impl(object, new_data, outcome, ...)
     }
 
 #' @rdname autoresid
 #' @export
 autoresid.fGARCH <-
-    function(object, new_data, outcome, ...) {
+    function(object, new_data, outcome = NULL, ...) {
+        if (is.null(outcome)) rlang::abort("outcome should not be `NULL`.")
         autoresid_fgarch_impl(object, new_data, outcome, ...)
     }

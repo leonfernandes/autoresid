@@ -2,33 +2,30 @@
 % Please edit documentation in R/extract_model.R
 \name{extract_model}
 \alias{extract_model}
+\alias{extract_model.model_fit}
 \alias{extract_model.Arima}
 \alias{extract_model.Arima_fit_impl}
-\alias{extract_model._Arima_fit_impl}
-\alias{extract_model.fGARCH}
-\alias{extract_model._fGARCH}
 \alias{extract_model.mdl_ts}
 \alias{extract_model.ARIMA}
 \alias{extract_model.AR}
+\alias{extract_model.fGARCH}
 \title{Extracts available models}
 \usage{
 extract_model(object, ...)
 
+\method{extract_model}{model_fit}(object, ...)
+
 \method{extract_model}{Arima}(object, ...)
 
 \method{extract_model}{Arima_fit_impl}(object, ...)
-
-\method{extract_model}{`_Arima_fit_impl`}(object, ...)
-
-\method{extract_model}{fGARCH}(object, ...)
-
-\method{extract_model}{`_fGARCH`}(object, ...)
 
 \method{extract_model}{mdl_ts}(object, ...)
 
 \method{extract_model}{ARIMA}(object, ...)
 
 \method{extract_model}{AR}(object, ...)
+
+\method{extract_model}{fGARCH}(object, ...)
 }
 \arguments{
 \item{object}{an object to extract model from.}
@@ -37,5 +34,6 @@ extract_model(object, ...)
 }
 \description{
 Internal generic function to extract and return objects that have been
-registered with this package.
+registered with this package. For now only \code{Arima} and \code{fGARCH} objects are
+registered.
 }

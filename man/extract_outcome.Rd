@@ -2,10 +2,28 @@
 % Please edit documentation in R/extract_outcome.R
 \name{extract_outcome}
 \alias{extract_outcome}
+\alias{extract_outcome.default}
+\alias{extract_outcome.model_spec}
+\alias{extract_outcome.workflow}
+\alias{extract_outcome.model_fit}
+\alias{extract_outcome.Arima}
+\alias{extract_outcome.Arima_fit_impl}
 \alias{extract_outcome.mdl_ts}
 \title{Extracts outcome column name}
 \usage{
 extract_outcome(object, ...)
+
+\method{extract_outcome}{default}(object, ...)
+
+\method{extract_outcome}{model_spec}(object, formula, ...)
+
+\method{extract_outcome}{workflow}(object, ...)
+
+\method{extract_outcome}{model_fit}(object, ...)
+
+\method{extract_outcome}{Arima}(object, ...)
+
+\method{extract_outcome}{Arima_fit_impl}(object, ...)
 
 \method{extract_outcome}{mdl_ts}(object, ...)
 }
@@ -13,7 +31,9 @@ extract_outcome(object, ...)
 \item{object}{an object to extract model from.}
 
 \item{...}{unused.}
+
+\item{formula}{a \code{formula} to fit the model to.}
 }
 \description{
-Internal generic function to extract and return outcome names.
+Generic function to extract and return outcome variable name.
 }

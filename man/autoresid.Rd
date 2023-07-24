@@ -11,9 +11,9 @@ autoresid(object, new_data, outcome = NULL, ...)
 
 \method{autoresid}{default}(object, new_data, outcome = NULL, ...)
 
-\method{autoresid}{Arima}(object, new_data, outcome, ...)
+\method{autoresid}{Arima}(object, new_data, outcome = NULL, ...)
 
-\method{autoresid}{fGARCH}(object, new_data, outcome, ...)
+\method{autoresid}{fGARCH}(object, new_data, outcome = NULL, ...)
 }
 \arguments{
 \item{object}{a fitted arima or garch model}
@@ -26,8 +26,7 @@ time series on which residuals are to be calculated.}
 \item{...}{Options passed to methods.}
 }
 \value{
-a \link[tsibble:tsibble-package]{tsibble} of predicted values and
-residuals.
+a \link[tsibble:tsibble-package]{tsibble} of fitted residuals.
 }
 \description{
 Extract fitted residuals from models
