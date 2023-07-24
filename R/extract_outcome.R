@@ -10,6 +10,9 @@ extract_outcome <- function(object, ...) UseMethod("extract_outcome")
 #' @export
 extract_outcome.default <-
     function(object, ...) {
+        if (inherits(object, "mdl_defn")) {
+            return(rlang::eval_tidy(object$formula))
+        }
         rlang::abort(
             glue::glue("Outcome of class {class(object)} cannot be determined.")
         )
@@ -42,10 +45,6 @@ extract_outcome.Arima <- function(object, ...) object$series
 #' @export
 extract_outcome.Arima_fit_impl <-
     function(object, ...) object$models$model_1$series
-
-#' @rdname extract_model
-extract_outcome.mdl_defn <-
-    function(object, ...) extract_outcome(rlang::eval_tidy(object$formula))
 
 #' @rdname extract_outcome
 #' @export
