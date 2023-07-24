@@ -3,6 +3,7 @@
 \name{extract_outcome}
 \alias{extract_outcome}
 \alias{extract_outcome.default}
+\alias{extract_outcome.formula}
 \alias{extract_outcome.model_spec}
 \alias{extract_outcome.workflow}
 \alias{extract_outcome.model_fit}
@@ -15,7 +16,9 @@ extract_outcome(object, ...)
 
 \method{extract_outcome}{default}(object, ...)
 
-\method{extract_outcome}{model_spec}(object, formula, ...)
+\method{extract_outcome}{formula}(object, ...)
+
+\method{extract_outcome}{model_spec}(object, ...)
 
 \method{extract_outcome}{workflow}(object, ...)
 
@@ -30,9 +33,7 @@ extract_outcome(object, ...)
 \arguments{
 \item{object}{an object to extract model from.}
 
-\item{...}{unused.}
-
-\item{formula}{a \code{formula} to fit the model to.}
+\item{...}{additional arguements such as \code{formula}.}
 }
 \description{
 Generic function to extract and return outcome variable name.

@@ -2,7 +2,7 @@
 #'
 #' Generic function to extract and return outcome variable name.
 #' @param object an object to extract model from.
-#' @param ... unused.
+#' @param ... additional arguements such as `formula`.
 #' @export
 extract_outcome <- function(object, ...) UseMethod("extract_outcome")
 
@@ -16,10 +16,13 @@ extract_outcome.default <-
     }
 
 #' @rdname extract_outcome
-#' @param formula a `formula` to fit the model to.
+#' @export
+extract_outcome.formula <- function(object, ...) tune::outcome_names(object)
+
+#' @rdname extract_outcome
 #' @export
 extract_outcome.model_spec <-
-    function(object, formula, ...) tune::outcome_names(formula)
+    function(object, ...) extract_outcome(list(...)$formula)
 
 #' @rdname extract_outcome
 #' @export
@@ -39,6 +42,10 @@ extract_outcome.Arima <- function(object, ...) object$series
 #' @export
 extract_outcome.Arima_fit_impl <-
     function(object, ...) object$models$model_1$series
+
+#' @rdname extract_model
+extract_outcome.mdl_defn <-
+    function(object, ...) extract_outcome(rlang::eval_tidy(object$formula))
 
 #' @rdname extract_outcome
 #' @export
