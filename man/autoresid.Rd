@@ -3,17 +3,17 @@
 \name{autoresid}
 \alias{autoresid}
 \alias{autoresid.default}
-\alias{autoresid.Arima}
-\alias{autoresid.fGARCH}
+\alias{autoresid.arima}
+\alias{autoresid.garch}
 \title{Extract fitted residuals from models}
 \usage{
 autoresid(object, new_data, outcome = NULL, ...)
 
 \method{autoresid}{default}(object, new_data, outcome = NULL, ...)
 
-\method{autoresid}{Arima}(object, new_data, outcome = NULL, ...)
+\method{autoresid}{arima}(object, new_data, outcome = NULL, ...)
 
-\method{autoresid}{fGARCH}(object, new_data, outcome = NULL, ...)
+\method{autoresid}{garch}(object, new_data, outcome = NULL, ...)
 }
 \arguments{
 \item{object}{a fitted arima or garch model}

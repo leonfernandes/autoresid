@@ -2,7 +2,7 @@
 % Please edit documentation in R/arima.R
 \name{autoresid_arima_impl}
 \alias{autoresid_arima_impl}
-\title{Autoresid implementation for Arima models}
+\title{Autoresid implementation for arima models}
 \usage{
 autoresid_arima_impl(object, new_data, outcome, ...)
 }
@@ -17,5 +17,5 @@ time series on which residuals are to be calculated.}
 \item{...}{Options passed to methods.}
 }
 \description{
-Autoresid implementation for Arima models
+Autoresid implementation for arima models
 }

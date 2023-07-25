@@ -1,16 +1,15 @@
-#' Autoresid methods for GARCH models
+#' Autoresid methods for garch models
 #'
 #' @inheritParams autoresid
 #' @rdname autoresid_garch
 #' @param standardize_resid single logical. Should the extracted residuals be
 #'      standardized?
-autoresid_fgarch_impl <-
+autoresid_garch_impl <-
     function(object, new_data, outcome, standardize_resid = FALSE, ...) {
-        if (!inherits(object, "fGARCH")) rlang::abort("Not fGARCH object.")
-        fit <- methods::slot(object, "fit")
-        omega <- subset_from_name(fit$params$params, "omega")
-        alpha <- subset_from_name(fit$params$params, "alpha")
-        beta <- subset_from_name(fit$params$params, "beta")
+        if (!inherits(object, "garch")) rlang::abort("Not garch object.")
+        omega <- object$omega
+        alpha <- object$alpha
+        beta <- object$beta
         delta <- 2
 
         len_alpha <- vctrs::vec_size(alpha)

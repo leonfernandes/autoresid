@@ -8,6 +8,7 @@
 #' @return a [tsibble][tsibble::tsibble-package] of fitted residuals.
 #' @export
 autoresid <- function(object, new_data, outcome = NULL, ...) {
+    stopifnot(inherits(new_data, "tbl_ts") == TRUE)
     UseMethod("autoresid")
 }
 
@@ -15,24 +16,29 @@ autoresid <- function(object, new_data, outcome = NULL, ...) {
 #' @export
 autoresid.default <-
     function(object, new_data, outcome = NULL, ...) {
-        mdl <- extract_model(object)
+        mdl <- smpspltools::extract_model(object)
+        if (!inherits(object, "arima") && !inherits(object, "garch")) {
+            rlang::abort(
+                glue::glue("Object of class {class(object)} is not registered.")
+            )
+        }
         if (is.null(outcome)) {
-            outcome <- extract_outcome(object)
+            outcome <- smpspltools::extract_outcome(object)
         }
         autoresid(mdl, new_data, outcome, ...)
     }
 
 #' @rdname autoresid
 #' @export
-autoresid.Arima <-
+autoresid.arima <-
     function(object, new_data, outcome = NULL, ...) {
         autoresid_arima_impl(object, new_data, outcome, ...)
     }
 
 #' @rdname autoresid
 #' @export
-autoresid.fGARCH <-
+autoresid.garch <-
     function(object, new_data, outcome = NULL, ...) {
         if (is.null(outcome)) rlang::abort("outcome should not be `NULL`.")
-        autoresid_fgarch_impl(object, new_data, outcome, ...)
+        autoresid_garch_impl(object, new_data, outcome, ...)
     }
