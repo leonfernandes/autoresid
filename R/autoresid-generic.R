@@ -16,8 +16,8 @@ autoresid <- function(object, new_data, outcome = NULL, ...) {
 #' @export
 autoresid.default <-
     function(object, new_data, outcome = NULL, ...) {
-        mdl <- smpspltools::extract_model(object)
-        if (!inherits(object, "arima") && !inherits(object, "garch")) {
+        object <- smpspltools::extract_model(object)
+        if (!smpspltools::is_smpspl_reg(object)) {
             rlang::abort(
                 glue::glue("Object of class {class(object)} is not registered.")
             )
@@ -25,7 +25,7 @@ autoresid.default <-
         if (is.null(outcome)) {
             outcome <- smpspltools::extract_outcome(object)
         }
-        autoresid(mdl, new_data, outcome, ...)
+        autoresid(object, new_data, outcome, ...)
     }
 
 #' @rdname autoresid
