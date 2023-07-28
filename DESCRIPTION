@@ -16,7 +16,6 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports:
     dplyr (>= 1.1.2),
-    fGarch (>= 4022.89),
     glue (>= 1.6.2),
     rlang (>= 1.1.1),
     smpspltools (>= 0.0.1.9003),
