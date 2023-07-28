@@ -27,18 +27,3 @@ autoresid.default <-
         }
         autoresid(object, new_data, outcome, ...)
     }
-
-#' @rdname autoresid
-#' @export
-autoresid.arima <-
-    function(object, new_data, outcome = NULL, ...) {
-        autoresid_arima_impl(object, new_data, outcome, ...)
-    }
-
-#' @rdname autoresid
-#' @export
-autoresid.garch <-
-    function(object, new_data, outcome = NULL, ...) {
-        if (is.null(outcome)) rlang::abort("outcome should not be `NULL`.")
-        autoresid_garch_impl(object, new_data, outcome, ...)
-    }

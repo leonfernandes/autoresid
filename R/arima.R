@@ -1,8 +1,6 @@
-#' Autoresid implementation for arima models
-#'
-#' @inheritParams autoresid
-#' @rdname autoresid_arima
-autoresid_arima_impl <-
+#' @rdname autoresid
+#' @export
+autoresid.arima <-
     function(object, new_data, outcome, ...) {
         if (!inherits(object, "arima")) rlang::abort("Not arima object.")
         phi <- object$phi
