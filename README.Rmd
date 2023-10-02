@@ -28,3 +28,25 @@ You can install the development version of autoresid like so:
 ``` r
 pak::pkg_install("leonfernandes/autoresid")
 ```
+
+## Example
+
+```{r demo}
+# load packages
+library(autoresid)
+library(fable)
+library(smpspltools)
+library(tsibble)
+
+# simulate i.i.d. data
+data <-
+  tsibble(x = rnorm(100), date = Sys.Date() + 0:99, index = date)
+
+# Consider fitting an AR(1) model
+fit <-
+  data |>
+  estimate(ARIMA(x ~ pdq(1, 0, 0) + PDQ(0, 0, 0)))
+
+# Get residuals
+autoresid(fit, data, "x")
+```
