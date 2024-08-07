@@ -47,6 +47,9 @@ fit <-
   data |>
   estimate(ARIMA(x ~ pdq(1, 0, 0) + PDQ(0, 0, 0)))
 
+# Extract arima object from fitted model
+fit_arima <- smpspltools::extract_model(fit)
+
 # Get residuals
-autoresid(fit, data, "x")
+autoresid(fit_arima, data, "x")
 ```
